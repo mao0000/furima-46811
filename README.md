@@ -3,7 +3,7 @@
 |:----------------|:-------|:--------------------------------------------------------------------|
 | nickname        | string | null: false                                                         |
 | email           | string | null: false, unique: true                                           |
-| password        | string | null: false, length: { minimum: 6 }, format: { with: 半角英数字混合 } |
+| encrypted_password | string | null: false, length: { minimum: 6 }, format: { with: 半角英数字混合 } |
 | last_name       | string | null: false, format: { with: 全角（漢字・ひらがな・カタカナ） }          |
 | first_name      | string | null: false, format: { with: 全角（漢字・ひらがな・カタカナ） }          |
 | last_name_kana  | string | null: false, format: { with: 全角カタカナ }                           |
@@ -13,7 +13,6 @@
 ### Association
 - has_many :items
 - has_many :orders
-- has_many :comments
 
 ## itemsテーブル
 | Column            | Type       | Options                                  |
@@ -23,35 +22,20 @@
 | category_id       | integer    | null: false, ActiveHash                  |
 | condition_id      | integer    | null: false, ActiveHash                  |
 | shipping_payer_id | integer    | null: false, ActiveHash                  |
-| shipping_area_id  | integer    | null: false, ActiveHash                  |
+| prefecture_id     | integer    | null: false, ActiveHash                  |
 | days_to_ship_id   | integer    | null: false, ActiveHash                  |
 | price             | integer    | null: false, ¥300〜¥9,999,999            |
-| user_id           | references | null: false, foreign_key: true           |
+| user              | references | null: false, foreign_key: true           |
 
 ### Association
 - belongs_to :user
 - has_one :order
-- has_many :comments
-
-## commentsテーブル
-| Column  | Type       | Options                        |
-|:--------|:-----------|:-------------------------------|
-| text    | text       | null: false                    |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
-- belongs_to :item
 
 ## ordersテーブル
 | Column        | Type       | Options                        |
 |:--------------|:-----------|:-------------------------------|
-| user_id       | references | null: false, foreign_key: true |
-| item_id       | references | null: false, foreign_key: true |
-| total_price   | integer    | null: false                    |
-| payment_token | string     | null: false                    |
-| status        | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -67,7 +51,7 @@
 | street_address | string     | null: false                                                      |
 | building_name  | string     | null: true                                                       |
 | phone_number   | string     | null: false, format: { with: ハイフン無しの10桁or11桁の半角数字 }     |
-| order_id       | references | null: false, foreign_key: true                                   |
+| order          | references | null: false, foreign_key: true                                   |
 
 ### Association
 - belongs_to :order
