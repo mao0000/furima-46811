@@ -4,11 +4,11 @@
 | nickname        | string | null: false                                                         |
 | email           | string | null: false, unique: true                                           |
 | password        | string | null: false, length: { minimum: 6 }, format: { with: 半角英数字混合 } |
-| last_name       | string | null: false, format: { with: 全角 }                                  |
-| first_name      | string | null: false, format: { with: 全角 }                                  |
-| last_name_kana  | string | null: false, format: { with: 全角カタカナ }                            |
-| first_name_kana | string | null: false, format: { with: 全角カタカナ }                            |
-| date_of_birth   | date   | null: false                                                          |
+| last_name       | string | null: false, format: { with: 全角（漢字・ひらがな・カタカナ） }          |
+| first_name      | string | null: false, format: { with: 全角（漢字・ひらがな・カタカナ） }          |
+| last_name_kana  | string | null: false, format: { with: 全角カタカナ }                           |
+| first_name_kana | string | null: false, format: { with: 全角カタカナ }                           |
+| date_of_birth   | date   | null: false                                                         |
 
 ### Association
 - has_many :items
@@ -61,7 +61,7 @@
 ## shipping_addressesテーブル
 | Column         | Type       | Options                                                          |
 |:---------------|:-----------|:-----------------------------------------------------------------|
-| postal_code    | string     | null: false, format: { with: ハイフンを含む7桁の半角数字 }           |
+| postal_code    | string     | null: false, format: { with: 「3桁ハイフン4桁」の半角文字列 }        |
 | prefecture_id  | integer    | null: false, ActiveHash                                          |
 | city           | string     | null: false                                                      |
 | street_address | string     | null: false                                                      |
