@@ -62,7 +62,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
 end
 
 group :test do
@@ -84,3 +83,4 @@ gem 'payjp'
 gem 'gon'
 gem "aws-sdk-s3", require: false
 gem "nokogiri", force_ruby_platform: true
+gem "globalid", "1.2.1"
