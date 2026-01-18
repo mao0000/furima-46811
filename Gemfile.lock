@@ -399,11 +399,11 @@ DEPENDENCIES
   aws-sdk-s3
   bootsnap
   capybara
+  cgi
   debug
   devise
   factory_bot_rails
   faker
-  globalid (= 1.2.1)
   gon
   image_processing (~> 1.2)
   importmap-rails
